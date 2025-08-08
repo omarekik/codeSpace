@@ -1,0 +1,27 @@
+# File: .github/workflows/msvc-build.yml
+name: MSVC Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # allows manual trigger
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up MSVC environment
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: Compile C++ code
+      run: cl main.cpp
+
+    - name: Run the executable
+      run: main.exe
+
