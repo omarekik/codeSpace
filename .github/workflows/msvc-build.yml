@@ -20,8 +20,8 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1
 
     - name: Compile C++ code
-      run: cl main.cpp
+      run: cl /EHsc main.cpp
 
     - name: Run the executable
-      run: main.exe
+      run: ./main.exe
 
